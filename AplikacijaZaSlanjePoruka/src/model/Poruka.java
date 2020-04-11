@@ -3,15 +3,18 @@ package model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javafx.beans.property.SimpleStringProperty;
+
 public class Poruka implements Serializable{
 
 	
 	
-	String primalac;
-	String posiljalac;
-	Date datumSlanjaPoruke;
-	String naslovPoruke;
-	String textPoruke;
+	private String primalac;
+	private String posiljalac;
+	private Date datumSlanjaPoruke;
+	private String naslovPoruke;
+	private String textPoruke;
+	private SimpleStringProperty
 	
 	public Poruka(String primalac , String posiljalac , Date datumSlanjaPoruke , String naslovPoruke , String textPoruke) {
 		
@@ -20,6 +23,7 @@ public class Poruka implements Serializable{
 		this.datumSlanjaPoruke= datumSlanjaPoruke;
 		this.naslovPoruke= naslovPoruke;
 		this.textPoruke= textPoruke;
+		
 		
 	}
 

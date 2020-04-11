@@ -10,7 +10,7 @@ public class Scena2 {
 	private Label ukupnoPorukaLbl;
 	private ComboBox<String> comboTipPoruka;
 	private Button prikaziBtn;
-	private TableView<String> tabelaPoruka;
+	private TabelaPregledOdabranihPoruka tabelaPoruka;
 	private Button prikaziTekstBtn;
 	private TextArea textPoruke;
 	private Button novaPoruka;

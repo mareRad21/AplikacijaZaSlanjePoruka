@@ -8,7 +8,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import model.Poruka;
 
-public class TabelaPregledPoste extends TableView<Poruka> {
+public class TabelaPregledOdabranihPoruka extends TableView<Poruka> {
 	
 	public ObservableList<Poruka> data = FXCollections.observableArrayList();
 	
