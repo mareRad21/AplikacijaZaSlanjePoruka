@@ -24,15 +24,32 @@ public class Scena3 extends GridPane {
         //prvi red
         primalacLbl = new Label("Primalac: ");
         primalacTextFld = new TextField();
+        primalacTextFld.setPrefWidth(200);
+        primalacTextFld.setMaxWidth(200);
         setConstraints(primalacLbl, 0, 0);
         setConstraints(primalacTextFld, 1, 0);
         //drugi red
         naslovLbl = new Label("Naslov: ");
         naslovTextFld = new TextField();
+        naslovTextFld.setPrefWidth(200);
+        naslovTextFld.setMaxWidth(200);
         setConstraints(naslovLbl, 0, 1);
         setConstraints(naslovTextFld, 1, 1);
         //treci red
         textPorukeLbl = new Label("Tekst poruke:");
+        textPorukeTextArea = new TextArea();
+        textPorukeTextArea.setPrefWidth(200);
+        textPorukeTextArea.setMaxWidth(200);
+        textPorukeTextArea.setPrefRowCount(5);
+        setConstraints(textPorukeLbl, 0, 2);
+        setConstraints(textPorukeTextArea, 1, 2);
+        //cetvrti red
+        posaljiBtn = new Button("Posalji");
+        setConstraints(posaljiBtn, 0, 3);
+        
+        getChildren().addAll(primalacLbl,primalacTextFld,naslovLbl,naslovTextFld,
+        		textPorukeLbl,textPorukeTextArea,posaljiBtn);
+        
 	}
 
 	public Label getPrimalacLbl() {
