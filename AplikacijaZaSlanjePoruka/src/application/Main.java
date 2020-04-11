@@ -11,6 +11,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
+			
 			//BorderPane root = new BorderPane();
 			Scena1 root= new Scena1();
 			Scene scene = new Scene(root,400,400);
