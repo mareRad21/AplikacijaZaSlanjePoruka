@@ -14,8 +14,8 @@ public class Main extends Application {
 		try {
 			
 			//BorderPane root = new BorderPane();
-			Scena3 root= new Scena3();
-			Scene scene = new Scene(root,500,500);
+			Scena1 root= new Scena1();
+			Scene scene = new Scene(root,600,100);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
