@@ -6,10 +6,10 @@ import java.util.ArrayList;
 public class Korisnik  implements Serializable{
 
 	
-	String email;
+	private String email;
 
-	ArrayList<Poruka> primljenePoruke;
-	ArrayList<Poruka> poslatePoruke;
+	private ArrayList<Poruka> primljenePoruke;
+	private ArrayList<Poruka> poslatePoruke;
 	
 	public Korisnik (String email) {
 		this.email=email;
@@ -41,5 +41,9 @@ public class Korisnik  implements Serializable{
 	public void setPoslatePoruke(ArrayList<Poruka> poslatePoruke) {
 		this.poslatePoruke = poslatePoruke;
 	}
-	
+	@Override
+	public String toString() {
+		
+		return email;
+	}
 }

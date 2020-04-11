@@ -14,7 +14,10 @@ public class Poruka implements Serializable{
 	private Date datumSlanjaPoruke;
 	private String naslovPoruke;
 	private String textPoruke;
-	private SimpleStringProperty
+	private SimpleStringProperty primalacSimpleString;
+	private SimpleStringProperty posiljalacSimpleString;
+	private SimpleStringProperty datumSlanjaPorukaSimpleString;
+	private SimpleStringProperty naslovPorukeSimpleString;
 	
 	public Poruka(String primalac , String posiljalac , Date datumSlanjaPoruke , String naslovPoruke , String textPoruke) {
 		
@@ -23,7 +26,10 @@ public class Poruka implements Serializable{
 		this.datumSlanjaPoruke= datumSlanjaPoruke;
 		this.naslovPoruke= naslovPoruke;
 		this.textPoruke= textPoruke;
-		
+		this.primalacSimpleString = new SimpleStringProperty(primalac);
+		this.posiljalacSimpleString = new SimpleStringProperty(posiljalac);
+		this.datumSlanjaPorukaSimpleString = new SimpleStringProperty(datumSlanjaPoruke.toString());
+		this.naslovPorukeSimpleString = new SimpleStringProperty(naslovPoruke);
 		
 	}
 
@@ -65,6 +71,38 @@ public class Poruka implements Serializable{
 
 	public void setTextPoruke(String textPoruke) {
 		this.textPoruke = textPoruke;
+	}
+
+	public String getPrimalacSimpleString() {
+		return primalacSimpleString.get();
+	}
+
+	public void setPrimalacSimpleString(SimpleStringProperty primalacSimpleString) {
+		this.primalacSimpleString = primalacSimpleString;
+	}
+
+	public String getPosiljalacSimpleString() {
+		return posiljalacSimpleString.get();
+	}
+
+	public void setPosiljalacSimpleString(SimpleStringProperty posiljalacSimpleString) {
+		this.posiljalacSimpleString = posiljalacSimpleString;
+	}
+
+	public String getDatumSlanjaPorukaSimpleString() {
+		return datumSlanjaPorukaSimpleString.get();
+	}
+
+	public void setDatumSlanjaPorukaSimpleString(SimpleStringProperty datumSlanjaPorukaSimpleString) {
+		this.datumSlanjaPorukaSimpleString = datumSlanjaPorukaSimpleString;
+	}
+
+	public String getNaslovPorukeSimpleString() {
+		return naslovPorukeSimpleString.get();
+	}
+
+	public void setNaslovPorukeSimpleString(SimpleStringProperty naslovPorukeSimpleString) {
+		this.naslovPorukeSimpleString = naslovPorukeSimpleString;
 	}
 	
 	
