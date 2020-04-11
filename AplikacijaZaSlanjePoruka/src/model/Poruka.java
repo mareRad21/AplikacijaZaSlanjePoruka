@@ -14,7 +14,7 @@ public class Poruka implements Serializable{
 	private Date datumSlanjaPoruke;
 	private String naslovPoruke;
 	private String textPoruke;
-	private SimpleStringProperty
+	private SimpleStringProperty primalacSimpleString;
 	
 	public Poruka(String primalac , String posiljalac , Date datumSlanjaPoruke , String naslovPoruke , String textPoruke) {
 		
