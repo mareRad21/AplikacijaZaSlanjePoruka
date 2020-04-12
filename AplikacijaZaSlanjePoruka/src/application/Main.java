@@ -1,5 +1,6 @@
 package application;
 	
+import controller.Controller;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import view.Scena1;
@@ -13,12 +14,17 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			
-			//BorderPane root = new BorderPane();
-			Scena1 root= new Scena1();
-			Scene scene = new Scene(root,600,100);
+			primaryStage= Controller.getInstance().getPrimaryStage();
+			
+		
+			Scene scene = Controller.getInstance().getSceneOne();
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
+			
+			Controller.getInstance().getScenaPrva().getKreirajNovogKorisnikaBtn().setOnAction(Controller.getInstance().getKreirajNovogKorisnikaBtnEvent());
+			
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

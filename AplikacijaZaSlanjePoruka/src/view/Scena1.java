@@ -61,6 +61,14 @@ public class Scena1 extends BorderPane {
 	public void setScena1Hbox(HBox scena1Hbox) {
 		this.scena1Hbox = scena1Hbox;
 	}
+
+	public Button getKreirajNovogKorisnikaBtn() {
+		return kreirajNovogKorisnikaBtn;
+	}
+
+	public void setKreirajNovogKorisnikaBtn(Button kreirajNovogKorisnikaBtn) {
+		this.kreirajNovogKorisnikaBtn = kreirajNovogKorisnikaBtn;
+	}
 	
 	
 }
