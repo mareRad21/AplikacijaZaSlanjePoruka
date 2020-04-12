@@ -17,7 +17,7 @@ public class Main extends Application {
 			primaryStage= Controller.getInstance().getPrimaryStage();
 			
 		
-			Scene scene = Controller.getInstance().getSceneOne();
+			Scene scene = Controller.getInstance().getSceneTwo();
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();

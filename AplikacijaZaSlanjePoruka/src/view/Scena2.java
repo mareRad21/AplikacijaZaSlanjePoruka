@@ -10,18 +10,32 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import model.Korisnik;
 
 public class Scena2 extends BorderPane{
 	private Label ukupnoPorukaLbl;
 	private ComboBox<String> comboTipPoruka;
 	private Button prikaziBtn;
+	private HBox hBoxZaComboIDugmeTop;
+
+	
+	
 	private TabelaPregledOdabranihPoruka tabelaPoruka;
 	private Button prikaziTekstBtn;
 	private TextArea textPoruke;
 	private Button novaPorukaBtn;
+	
+	
+	private VBox vBoxZaSveKomponenteScena2;
+	
+	
+	
 	private Korisnik korisnik;
 
+	
+	
 	
 	// korisnik je pod znakom pitanja !!!!!
 	public Scena2(Korisnik korisnik) {
@@ -46,6 +60,17 @@ public class Scena2 extends BorderPane{
 		textPoruke = new TextArea();
 
 		novaPorukaBtn = new Button("Nova poruka");
+		
+		hBoxZaComboIDugmeTop = new HBox();
+		
+		hBoxZaComboIDugmeTop.getChildren().addAll(comboTipPoruka,prikaziBtn);
+		
+		vBoxZaSveKomponenteScena2 = new VBox();
+		
+		vBoxZaSveKomponenteScena2.getChildren().addAll(ukupnoPorukaLbl , hBoxZaComboIDugmeTop , tabelaPoruka , prikaziTekstBtn ,textPoruke ,novaPorukaBtn );
+		
+		setCenter(vBoxZaSveKomponenteScena2);
+		
 
 	}
 
