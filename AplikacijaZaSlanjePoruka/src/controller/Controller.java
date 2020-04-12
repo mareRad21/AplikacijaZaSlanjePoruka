@@ -4,6 +4,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.Korisnik;
 import model.KreirajNovogKorisnikaBtnEvent;
+import model.PregledPorukaBtnEvent;
 import view.Scena1;
 import view.Scena2;
 import view.Scena3;
@@ -20,7 +21,7 @@ public class Controller {
 	
 	
 	private KreirajNovogKorisnikaBtnEvent kreirajNovogKorisnikaBtnEvent;
-	
+	private PregledPorukaBtnEvent pregledPorukaBtnEvent;
 	private Scene sceneOne;
 	private Scene sceneTwo;
 	private Scene sceneThree;
@@ -39,7 +40,7 @@ public class Controller {
 		 sceneThree = new Scene(scenaTreca, 400, 400);
 		 
 		 kreirajNovogKorisnikaBtnEvent = new KreirajNovogKorisnikaBtnEvent(scenaPrva.getEmailTextFld());
-		
+		 pregledPorukaBtnEvent = new PregledPorukaBtnEvent(scenaPrva.getEmailTextFld());
 	}
 
 	public static Controller getInstance() {
@@ -125,6 +126,14 @@ public class Controller {
 
 	public void setPrimaryStage(Stage primaryStage) {
 		this.primaryStage = primaryStage;
+	}
+
+	public PregledPorukaBtnEvent getPregledPorukaBtnEvent() {
+		return pregledPorukaBtnEvent;
+	}
+
+	public void setPregledPorukaBtnEvent(PregledPorukaBtnEvent pregledPorukaBtnEvent) {
+		this.pregledPorukaBtnEvent = pregledPorukaBtnEvent;
 	}
 	
 	

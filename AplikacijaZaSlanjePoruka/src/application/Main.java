@@ -2,11 +2,8 @@ package application;
 	
 import controller.Controller;
 import javafx.application.Application;
-import javafx.stage.Stage;
-import view.Scena1;
-import view.Scena3;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 
 public class Main extends Application {
@@ -15,16 +12,18 @@ public class Main extends Application {
 		try {
 			
 			primaryStage= Controller.getInstance().getPrimaryStage();
-			
+			Controller.getInstance().getScenaPrva().getPregledPorukaBtn().setOnAction(Controller.getInstance().getPregledPorukaBtnEvent());
+			Controller.getInstance().getScenaPrva().getKreirajNovogKorisnikaBtn().setOnAction(Controller.getInstance().getKreirajNovogKorisnikaBtnEvent());
+
 		
-			Scene scene = Controller.getInstance().getSceneTwo();
+			Scene scene = Controller.getInstance().getSceneOne();
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			
-			Controller.getInstance().getScenaPrva().getKreirajNovogKorisnikaBtn().setOnAction(Controller.getInstance().getKreirajNovogKorisnikaBtnEvent());
 			
-			
+//			Controller.getInstance().getScenaPrva().getPregledPorukaBtn().setOnAction(Controller.getInstance().getPregledPorukaBtnEvent());
+//			Controller.getInstance().getScenaPrva().getKreirajNovogKorisnikaBtn().setOnAction(Controller.getInstance().getKreirajNovogKorisnikaBtnEvent());
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

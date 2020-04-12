@@ -14,7 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
-public class PregledPorukaBtnEvent implements EventHandler<ActionEvent> {
+public class PregledPorukaBtnEvent implements EventHandler<javafx.event.ActionEvent> {
 	
 	private TextField emailTextField;
 	private Scene scene2;
@@ -23,7 +23,7 @@ public class PregledPorukaBtnEvent implements EventHandler<ActionEvent> {
 	private final Pattern patternEmail = Pattern.compile(regexEmail);
 	private Korisnik korisnik;
 	
-	public PregledPorukaBtnEvent(TextField emialTextField) {
+	public PregledPorukaBtnEvent(TextField emailTextField) {
 		this.emailTextField = emailTextField;
 	}
 	
@@ -48,7 +48,9 @@ public class PregledPorukaBtnEvent implements EventHandler<ActionEvent> {
 				Korisnik korisnik;
 				
 				while((korisnik = (Korisnik) in.readObject())!= null) {
+					
 					if(korisnik.toString().equals(emailTextField.getText())){
+						
 						Controller.getInstance().setKorisnik(korisnik);
 						
 						scene2 = Controller.getInstance().getSceneTwo();
