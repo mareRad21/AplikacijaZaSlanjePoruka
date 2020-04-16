@@ -12,9 +12,11 @@ public class Main extends Application {
 		try {
 			
 			primaryStage= Controller.getInstance().getPrimaryStage();
+			
 			Controller.getInstance().getScenaPrva().getPregledPorukaBtn().setOnAction(Controller.getInstance().getPregledPorukaBtnEvent());
 			Controller.getInstance().getScenaPrva().getKreirajNovogKorisnikaBtn().setOnAction(Controller.getInstance().getKreirajNovogKorisnikaBtnEvent());
-
+			Controller.getInstance().getScenaDruga().getNovaPorukaBtn().setOnAction(Controller.getInstance().getNovaPorukaBtnEvent());
+			Controller.getInstance().getScenaTreca().getPosaljiBtn().setOnAction(Controller.getInstance().getPosaljiBtnEvent());
 		
 			Scene scene = Controller.getInstance().getSceneOne();
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());

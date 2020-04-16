@@ -46,4 +46,28 @@ public class Korisnik  implements Serializable{
 		
 		return email;
 	}
+	
+	@Override
+	public int hashCode() {
+		
+		int zbirKaraktera=0;
+		String ee = this.email.trim();
+		char [] nizChara= ee.toCharArray();
+		for(int i = 0 ; i <nizChara.length ; i++) {
+			zbirKaraktera+=nizChara[i] * (i+1);
+			
+		}
+		
+		return zbirKaraktera;
+	}
+	
+	
+	
+	@Override
+	public boolean equals(Object obj) {
+		
+		return this.hashCode()==obj.hashCode();
+
+	}
+	
 }
