@@ -44,7 +44,7 @@ public class Controller {
 
 		scenaPrva = new Scena1();
 		scenaDruga = new Scena2(korisnik);
-		scenaTreca = new Scena3();
+		scenaTreca = new Scena3(korisnik);
 
 		sceneOne = new Scene(scenaPrva, 400, 400);
 

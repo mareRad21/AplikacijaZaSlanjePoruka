@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import model.Korisnik;
 
 public class Scena3 extends GridPane {
 	private Label primalacLbl;
@@ -15,8 +16,10 @@ public class Scena3 extends GridPane {
 	private Label textPorukeLbl;
 	private TextArea textPorukeTextArea;
 	private Button posaljiBtn;
+	private Korisnik korisnik;
 	
-	public Scena3() {
+	public Scena3(Korisnik korisnik) {
+		this.korisnik = korisnik;
 		setPadding(new Insets(15, 15, 15, 15));
         setVgap(8);
         setHgap(10);
@@ -106,6 +109,14 @@ public class Scena3 extends GridPane {
 
 	public void setPosaljiBtn(Button posaljiBtn) {
 		this.posaljiBtn = posaljiBtn;
+	}
+
+	public Korisnik getKorisnik() {
+		return korisnik;
+	}
+
+	public void setKorisnik(Korisnik korisnik) {
+		this.korisnik = korisnik;
 	}
 	
 	
