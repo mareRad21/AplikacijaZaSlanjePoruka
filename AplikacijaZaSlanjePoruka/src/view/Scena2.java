@@ -4,6 +4,8 @@ import java.util.Observable;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -16,6 +18,7 @@ import model.Korisnik;
 
 public class Scena2 extends BorderPane{
 	private Label ukupnoPorukaLbl;
+	private HBox hBoxZaLabeluUkupnoPoruka;
 	private ComboBox<String> comboTipPoruka;
 	private Button prikaziBtn;
 	private HBox hBoxZaComboIDugmeTop;
@@ -24,8 +27,10 @@ public class Scena2 extends BorderPane{
 	
 	private TabelaPregledOdabranihPoruka tabelaPoruka;
 	private Button prikaziTekstBtn;
+	private HBox hBoxZaPrikaziTextBtn;
 	private TextArea textPoruke;
 	private Button novaPorukaBtn;
+	private HBox hBoxZaNovaPorukaBtn;
 	
 	
 	private VBox vBoxZaSveKomponenteScena2;
@@ -60,15 +65,32 @@ public class Scena2 extends BorderPane{
 		textPoruke = new TextArea();
 
 		novaPorukaBtn = new Button("Nova poruka");
+		//poceo odavde
+		hBoxZaLabeluUkupnoPoruka = new HBox();
+		hBoxZaLabeluUkupnoPoruka.setAlignment(Pos.CENTER);
+		hBoxZaLabeluUkupnoPoruka.setMargin(ukupnoPorukaLbl, new Insets(15, 15, 5, 15));
+		hBoxZaLabeluUkupnoPoruka.getChildren().add(ukupnoPorukaLbl);
 		
 		hBoxZaComboIDugmeTop = new HBox();
-		
+		hBoxZaComboIDugmeTop.setAlignment(Pos.CENTER);
+		hBoxZaComboIDugmeTop.setMargin(comboTipPoruka, new Insets(15, 5, 15, 10));
+		hBoxZaComboIDugmeTop.setMargin(prikaziBtn, new Insets(15, 10, 15, 5));
 		hBoxZaComboIDugmeTop.getChildren().addAll(comboTipPoruka,prikaziBtn);
+		
+		hBoxZaPrikaziTextBtn = new HBox();
+		hBoxZaPrikaziTextBtn.setAlignment(Pos.CENTER);
+		hBoxZaPrikaziTextBtn.setMargin(prikaziTekstBtn, new Insets(10, 10, 10, 10));
+		hBoxZaPrikaziTextBtn.getChildren().add(prikaziTekstBtn);
+		
+		hBoxZaNovaPorukaBtn = new HBox();
+		hBoxZaNovaPorukaBtn.setAlignment(Pos.CENTER);
+		hBoxZaNovaPorukaBtn.setMargin(novaPorukaBtn, new Insets(15, 15, 15, 15));
+		hBoxZaNovaPorukaBtn.getChildren().add(novaPorukaBtn);
+		
 		
 		vBoxZaSveKomponenteScena2 = new VBox();
 		
-		vBoxZaSveKomponenteScena2.getChildren().addAll(ukupnoPorukaLbl , hBoxZaComboIDugmeTop , tabelaPoruka , prikaziTekstBtn ,textPoruke ,novaPorukaBtn );
-		
+		vBoxZaSveKomponenteScena2.getChildren().addAll(hBoxZaLabeluUkupnoPoruka , hBoxZaComboIDugmeTop , tabelaPoruka , hBoxZaPrikaziTextBtn ,textPoruke ,hBoxZaNovaPorukaBtn );
 		setCenter(vBoxZaSveKomponenteScena2);
 		
 
