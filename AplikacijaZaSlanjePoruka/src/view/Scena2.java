@@ -26,7 +26,7 @@ public class Scena2 extends BorderPane{
 
 	
 	
-	private TabelaPregledOdabranihPoruka tabelaPoruka;
+	private TabelaPregledOdabranihPoruka tabelaPoruka ;
 	private Button prikaziTekstBtn;
 	private HBox hBoxZaPrikaziTextBtn;
 	private TextArea textPoruke;
@@ -44,25 +44,17 @@ public class Scena2 extends BorderPane{
 	
 	
 	// korisnik je pod znakom pitanja !!!!!
-	public Scena2(Korisnik korisnik) {
-		this.korisnik=korisnik;
+	public Scena2() {
 		
 		
 		ukupnoPorukaLbl = new Label();
-		System.out.println(korisnik);
 		//ukupnoPorukaLbl = new Label("Ukupno poruka: " + korisnik.getPrimljenePoruke().size() + " dolazne i "				+ korisnik.getPoslatePoruke().size() + " odlazne");
 		ObservableList<String> comboBoxDelovi = FXCollections.observableArrayList("Odlazne", "Dolazne");
 		comboTipPoruka = new ComboBox<>(comboBoxDelovi);
 		comboTipPoruka.setValue(comboBoxDelovi.get(0));
 		prikaziBtn = new Button("Prikazi");
-
-		if (comboTipPoruka.getValue().equals("Odlazne")) {
-			tabelaPoruka = new TabelaPregledOdabranihPoruka(korisnik.getPoslatePoruke());
-		}
-
-		if (comboTipPoruka.getValue().equals("Dolazne")) {
-			tabelaPoruka = new TabelaPregledOdabranihPoruka(korisnik.getPrimljenePoruke());
-		}
+		
+		
 
 		prikaziTekstBtn = new Button("Prikazi tekst");
 		textPoruke = new TextArea();
@@ -90,7 +82,7 @@ public class Scena2 extends BorderPane{
 		hBoxZaNovaPorukaBtn.setMargin(novaPorukaBtn, new Insets(15, 15, 15, 15));
 		hBoxZaNovaPorukaBtn.getChildren().add(novaPorukaBtn);
 		
-		
+		tabelaPoruka = new TabelaPregledOdabranihPoruka();
 		vBoxZaSveKomponenteScena2 = new VBox();
 		
 		vBoxZaSveKomponenteScena2.getChildren().addAll(hBoxZaLabeluUkupnoPoruka , hBoxZaComboIDugmeTop , tabelaPoruka , hBoxZaPrikaziTextBtn ,textPoruke ,hBoxZaNovaPorukaBtn );

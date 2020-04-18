@@ -16,24 +16,47 @@ import model.KreirajNovogKorisnikaBtnEvent;
 import model.NovaPorukaBtnEvent;
 import model.PosaljiBtnEvent;
 import model.PregledPorukaBtnEvent;
+import model.PrikaziPorukeBtnEvent;
 import view.Scena1;
 import view.Scena2;
 import view.Scena3;
 
 public class Controller {
+	private Korisnik k;
 
+	{
+		File file = new File("korisnici.dat");
+		try {
+			ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
+			ArrayList<Korisnik> korisniciFile = (ArrayList<Korisnik>) in.readObject();
+			k = korisniciFile.get(0);
+			System.out.println("controler");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
 	private static Controller instance = null;
 
 	private Scena1 scenaPrva;
 	private Scena2 scenaDruga;
 	private Scena3 scenaTreca;
-	private Korisnik korisnik = new Korisnik(null);
+	private Korisnik korisnik;
 	private Stage primaryStage = new Stage();
 
 	private KreirajNovogKorisnikaBtnEvent kreirajNovogKorisnikaBtnEvent;
 	private PregledPorukaBtnEvent pregledPorukaBtnEvent;
 	private NovaPorukaBtnEvent novaPorukaBtnEvent;
 	private PosaljiBtnEvent posaljiBtnEvent;
+	private PrikaziPorukeBtnEvent prikaziPorukeBtnEvent;
+
 	private Scene sceneOne;
 	private Scene sceneTwo;
 	private Scene sceneThree;
@@ -42,10 +65,9 @@ public class Controller {
 
 	private Controller() {
 
-
 		scenaPrva = new Scena1();
-		scenaDruga = new Scena2(korisnik);
-		scenaTreca = new Scena3(korisnik);
+		scenaDruga = new Scena2();
+		scenaTreca = new Scena3();
 
 		sceneOne = new Scene(scenaPrva, 400, 400);
 
@@ -57,18 +79,20 @@ public class Controller {
 		novaPorukaBtnEvent = new NovaPorukaBtnEvent();
 		posaljiBtnEvent = new PosaljiBtnEvent(scenaTreca.getPrimalacTextFld(), scenaTreca.getNaslovTextFld(),
 				scenaTreca.getTextPorukeTextArea());
+		prikaziPorukeBtnEvent = new PrikaziPorukeBtnEvent(scenaDruga.getComboTipPoruka(), scenaDruga.getTabelaPoruka());
 
 		try {
 			File file = new File("korisnici.dat");
-			
-			 
-			  // kako da stavimo da se ovo izvrsi samo pri prvom pokretanju programa
+
+			// kako da stavimo da se ovo izvrsi samo pri prvom pokretanju programa
+
 			
 			/*
 			 * ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
 			 * korisniciUFileu.add(new Korisnik("admin@admin.com"));
 			 * out.writeObject(korisniciUFileu);
 			 */
+			 
 			 
 			ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
 
@@ -208,4 +232,11 @@ public class Controller {
 		this.pregledPorukaBtnEvent = pregledPorukaBtnEvent;
 	}
 
+	public PrikaziPorukeBtnEvent getPrikaziPorukeBtnEvent() {
+		return prikaziPorukeBtnEvent;
+	}
+
+	public void setPrikaziPorukeBtnEvent(PrikaziPorukeBtnEvent prikaziPorukeBtnEvent) {
+		this.prikaziPorukeBtnEvent = prikaziPorukeBtnEvent;
+	}
 }

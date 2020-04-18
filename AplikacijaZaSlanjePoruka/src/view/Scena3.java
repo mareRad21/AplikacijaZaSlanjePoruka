@@ -18,8 +18,7 @@ public class Scena3 extends GridPane {
 	private Button posaljiBtn;
 	private Korisnik korisnik;
 	
-	public Scena3(Korisnik korisnik) {
-		this.korisnik = korisnik;
+	public Scena3() {
 		setPadding(new Insets(15, 15, 15, 15));
         setVgap(8);
         setHgap(10);

@@ -64,11 +64,11 @@ public class PregledPorukaBtnEvent implements EventHandler<javafx.event.ActionEv
 						Controller.getInstance().getScenaDruga().getUkupnoPorukaLbl().setText("Ukupno poruka: " + Controller.getInstance().getScenaDruga().getKorisnik().getPrimljenePoruke().size() + " dolazne i "				+ Controller.getInstance().getScenaDruga().getKorisnik().getPoslatePoruke().size() + " odlazne");
 						
 						System.out.println(Controller.getInstance().getScenaDruga().getKorisnik()+ " ovo je korisnik kojeg koristi scena 2 ");
-						scene2 = Controller.getInstance().getSceneTwo();
+					
 						
 						primaryStage= Controller.getInstance().getPrimaryStage();
 				
-						primaryStage.setScene(scene2);
+						primaryStage.setScene(Controller.getInstance().getSceneTwo());
 						primaryStage.show();
 					
 					}

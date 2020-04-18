@@ -20,7 +20,7 @@ public class TabelaPregledOdabranihPoruka extends TableView<Poruka> {
 	TableColumn kolona3 = new TableColumn("Datum slanja");
 	TableColumn kolona4 = new TableColumn("Naslov");
 	
-	public TabelaPregledOdabranihPoruka(ArrayList<Poruka> listaPoruka) {
+	public TabelaPregledOdabranihPoruka() {
 		
 		
 		getColumns().addAll(kolona1,kolona2,kolona3,kolona4);
@@ -29,19 +29,19 @@ public class TabelaPregledOdabranihPoruka extends TableView<Poruka> {
 		kolona3.prefWidthProperty().bind(this.widthProperty().multiply(0.2));
 		kolona4.prefWidthProperty().bind(this.widthProperty().multiply(0.2));
 		
-		for(Poruka poruka :listaPoruka) {
+		 
 	
-		kolona1.setCellValueFactory(new PropertyValueFactory<Poruka, String>("primalacSimpleString"));
+		kolona1.setCellValueFactory(new PropertyValueFactory<Poruka, String>("primalac"));
 		
-		kolona2.setCellValueFactory(new PropertyValueFactory<Poruka, String>("posiljalacSimpleString"));
+		kolona2.setCellValueFactory(new PropertyValueFactory<Poruka, String>("posiljalac"));
 		
-		kolona3.setCellValueFactory(new PropertyValueFactory<Poruka, String>("datumSlanjaPorukaSimpleString"));
+		kolona3.setCellValueFactory(new PropertyValueFactory<Poruka, String>("datumSlanjaPoruke"));
 		
-		kolona4.setCellValueFactory(new PropertyValueFactory<Poruka, String>("naslovPorukeSimpleString"));
+		kolona4.setCellValueFactory(new PropertyValueFactory<Poruka, String>("naslovPoruke"));
 		
-		data.add(poruka);
 		
-		}
+		
+		
 		setItems(data);
 	}
 	

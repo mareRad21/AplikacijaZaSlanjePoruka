@@ -8,13 +8,13 @@ public class Korisnik  implements Serializable{
 	
 	private String email;
 
-	private ArrayList<Poruka> primljenePoruke;
-	private ArrayList<Poruka> poslatePoruke;
+	private ArrayList<Poruka> primljenePoruke= new ArrayList<>();
+	private ArrayList<Poruka> poslatePoruke= new ArrayList<>();
 	
 	public Korisnik (String email) {
 		this.email=email;
-		this.primljenePoruke= new ArrayList<>();
-		this.poslatePoruke= new ArrayList<>();
+		
+		
 		
 	}
 

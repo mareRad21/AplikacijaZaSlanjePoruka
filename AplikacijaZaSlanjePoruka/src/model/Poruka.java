@@ -11,7 +11,7 @@ public class Poruka implements Serializable {
 	private String posiljalac;
 	private Date datumSlanjaPoruke;
 	private String naslovPoruke;
-	private String textPoruke;
+	private String textPoruke;             
 	private transient SimpleStringProperty primalacSimpleString;
 	private transient SimpleStringProperty posiljalacSimpleString;
 	private transient SimpleStringProperty datumSlanjaPorukaSimpleString;
@@ -24,10 +24,10 @@ public class Poruka implements Serializable {
 		this.datumSlanjaPoruke = datumSlanjaPoruke;
 		this.naslovPoruke = naslovPoruke;
 		this.textPoruke = textPoruke;
-		this.primalacSimpleString = new SimpleStringProperty(primalac);
-		this.posiljalacSimpleString = new SimpleStringProperty(posiljalac);
-		this.datumSlanjaPorukaSimpleString = new SimpleStringProperty(datumSlanjaPoruke.toString());
-		this.naslovPorukeSimpleString = new SimpleStringProperty(naslovPoruke);
+		this.primalacSimpleString = new SimpleStringProperty(this.primalac);
+		this.posiljalacSimpleString = new SimpleStringProperty(this.posiljalac);
+		this.datumSlanjaPorukaSimpleString = new SimpleStringProperty(this.datumSlanjaPoruke.toString());
+		this.naslovPorukeSimpleString = new SimpleStringProperty(this.naslovPoruke);
 
 	}
 
