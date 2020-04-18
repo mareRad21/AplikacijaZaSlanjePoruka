@@ -1,5 +1,6 @@
 package view;
 
+import java.util.ArrayList;
 import java.util.Observable;
 
 import javafx.collections.FXCollections;
@@ -39,15 +40,17 @@ public class Scena2 extends BorderPane{
 	
 	private Korisnik korisnik;
 
-	
+	private ArrayList<Korisnik> korisniciIzFilea;
 	
 	
 	// korisnik je pod znakom pitanja !!!!!
 	public Scena2(Korisnik korisnik) {
 		this.korisnik=korisnik;
-
-		ukupnoPorukaLbl = new Label("Ukupno poruka: " + korisnik.getPrimljenePoruke().size() + " dolazne i "
-				+ korisnik.getPoslatePoruke().size() + " odlazne");
+		
+		
+		ukupnoPorukaLbl = new Label();
+		System.out.println(korisnik);
+		//ukupnoPorukaLbl = new Label("Ukupno poruka: " + korisnik.getPrimljenePoruke().size() + " dolazne i "				+ korisnik.getPoslatePoruke().size() + " odlazne");
 		ObservableList<String> comboBoxDelovi = FXCollections.observableArrayList("Odlazne", "Dolazne");
 		comboTipPoruka = new ComboBox<>(comboBoxDelovi);
 		comboTipPoruka.setValue(comboBoxDelovi.get(0));
@@ -176,5 +179,7 @@ public class Scena2 extends BorderPane{
 		this.korisnik = korisnik;
 	}
 	
+	
+
 
 }

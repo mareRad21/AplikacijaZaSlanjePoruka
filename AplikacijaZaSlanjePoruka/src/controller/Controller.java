@@ -42,6 +42,7 @@ public class Controller {
 
 	private Controller() {
 
+
 		scenaPrva = new Scena1();
 		scenaDruga = new Scena2(korisnik);
 		scenaTreca = new Scena3(korisnik);
@@ -62,12 +63,13 @@ public class Controller {
 			
 			 
 			  // kako da stavimo da se ovo izvrsi samo pri prvom pokretanju programa
+			
 			/*
 			 * ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
 			 * korisniciUFileu.add(new Korisnik("admin@admin.com"));
 			 * out.writeObject(korisniciUFileu);
-			 * 
 			 */
+			 
 			ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
 
 			try {

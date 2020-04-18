@@ -25,9 +25,17 @@ public class NovaPorukaBtnEvent implements EventHandler<javafx.event.ActionEvent
 	@Override
 	public void handle(ActionEvent arg0) {
 		
-		scene3 = Controller.getInstance().getSceneThree();
+	
 		//provera korisnika
-		System.out.println(Controller.getInstance().getKorisnik()+"stampa iz nova porukaBtn! ");
+		System.out.println(Controller.getInstance().getKorisnik()+" stampa iz novaPorukaBtn! ");
+		
+		System.out.println(Controller.getInstance().getScenaDruga().getKorisnik()+" korisnik scene 2");
+		Controller.getInstance().getScenaTreca().setKorisnik(Controller.getInstance().getKorisnik());
+		
+		
+		System.out.println(Controller.getInstance().getScenaTreca().getKorisnik()+ " ovo je korisnik kojeg koristi scena 3");
+		
+		scene3 = Controller.getInstance().getSceneThree();
 		primaryStage= Controller.getInstance().getPrimaryStage();
 
 		primaryStage.setScene(scene3);

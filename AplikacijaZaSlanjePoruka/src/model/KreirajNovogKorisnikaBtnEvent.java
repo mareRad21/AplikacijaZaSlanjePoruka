@@ -95,7 +95,9 @@ public class KreirajNovogKorisnikaBtnEvent implements EventHandler<javafx.event.
 						out.close();
 
 						Controller.getInstance().setKorisnik(korisnik);
-
+						 Controller.getInstance().getScenaDruga().setKorisnik(korisnik);
+						Controller.getInstance().getScenaDruga().getUkupnoPorukaLbl().setText("Ukupno poruka: " + Controller.getInstance().getScenaDruga().getKorisnik().getPrimljenePoruke().size() + " dolazne i "				+ Controller.getInstance().getScenaDruga().getKorisnik().getPoslatePoruke().size() + " odlazne");
+						
 						scene2 = Controller.getInstance().getSceneTwo();
 
 						primaryStage = Controller.getInstance().getPrimaryStage();
