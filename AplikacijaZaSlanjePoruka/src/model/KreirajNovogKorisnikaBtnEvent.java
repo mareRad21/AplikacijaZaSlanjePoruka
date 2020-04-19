@@ -42,6 +42,8 @@ public class KreirajNovogKorisnikaBtnEvent implements EventHandler<javafx.event.
 
 		Matcher matcherEmail = patternEmail.matcher(emailTextField.getText());
 
+		// provera da li je emailTextfield prazan ili nepravilnog formata
+
 		if (emailTextField.getText().isEmpty()) {
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setContentText("Polje za unos emaila ne sme biti prazno");
@@ -55,58 +57,64 @@ public class KreirajNovogKorisnikaBtnEvent implements EventHandler<javafx.event.
 		} else {
 
 			try {
+				// iscitavanje iz filea svih objekata tipa Korisnik u kolekciju
+
 				ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
 
 				korisniciUFileu = (ArrayList<Korisnik>) in.readObject();
 				in.close();
 
-				ArrayList<Korisnik> listaZaProveru = new ArrayList<>();
+				// pravljennje nove liste koja ce se popuniti objektima iz kolekcije iznad
 
+				ArrayList<Korisnik> listaZaProveru = new ArrayList<>();
 				for (Korisnik korisnikIzFajla : korisniciUFileu) {
 					listaZaProveru.add(korisnikIzFajla);
 				}
 
-				
-
 				korisnik = new Korisnik(emailTextField.getText());
 
-				
+				// provera da li korisnik koga zelimo napraviti vec postoji u listi korisnika
+				if (listaZaProveru.contains(korisnik)) {
+					Alert alert = new Alert(AlertType.INFORMATION);
+					alert.setContentText("Korisnik sa emailom: " + emailTextField.getText() + " vec postoji");
+					alert.show();
+					emailTextField.clear();
+					return;
 
-					if (listaZaProveru.contains(korisnik)) {
-						Alert alert = new Alert(AlertType.INFORMATION);
-						alert.setContentText("Korisnik sa emailom: " + emailTextField.getText() + " vec postoji");
-						alert.show();
-						emailTextField.clear();
-						return;
+				} else {
 
-					} else {
-						korisniciUFileu.add(korisnik);
+					// dodavanje korisnika ako taj korisnik vec ne postoji
+					korisniciUFileu.add(korisnik);
+
+					Alert alert = new Alert(AlertType.INFORMATION);
+					alert.setContentText("Korisnik sa emailom: " + korisnik.getEmail() + " je dodat");
+					alert.show();
 					
-						Alert alert = new Alert(AlertType.INFORMATION);
-						alert.setContentText("Korisnik sa emailom: " + korisnik.getEmail() + " je dodat");
-						alert.show();
-						Controller.getInstance().setKorisniciUFileu(korisniciUFileu);
+					
+					Controller.getInstance().setKorisniciUFileu(korisniciUFileu);
+					ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
+					out.writeObject(korisniciUFileu);
+					out.flush();
 
-						ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
-						System.out.println("upisivanje u file");
-						out.writeObject(korisniciUFileu);
-						out.flush();
+					out.close();
 
-						out.close();
+					Controller.getInstance().setKorisnik(korisnik);
+					Controller.getInstance().getScenaDruga().setKorisnik(korisnik);
+					// podesavanje teksta labele
+					
+					Controller.getInstance().getScenaDruga().getUkupnoPorukaLbl()
+							.setText("Ukupno poruka: "
+									+ Controller.getInstance().getScenaDruga().getKorisnik().getPrimljenePoruke().size()
+									+ " dolazne i "
+									+ Controller.getInstance().getScenaDruga().getKorisnik().getPoslatePoruke().size()
+									+ " odlazne");
 
-						Controller.getInstance().setKorisnik(korisnik);
-						 Controller.getInstance().getScenaDruga().setKorisnik(korisnik);
-						Controller.getInstance().getScenaDruga().getUkupnoPorukaLbl().setText("Ukupno poruka: " + Controller.getInstance().getScenaDruga().getKorisnik().getPrimljenePoruke().size() + " dolazne i "				+ Controller.getInstance().getScenaDruga().getKorisnik().getPoslatePoruke().size() + " odlazne");
-						
-						scene2 = Controller.getInstance().getSceneTwo();
+					scene2 = Controller.getInstance().getSceneTwo();
+					primaryStage = Controller.getInstance().getPrimaryStage();
+					primaryStage.setScene(scene2);
+					primaryStage.show();
 
-						primaryStage = Controller.getInstance().getPrimaryStage();
-
-						primaryStage.setScene(scene2);
-						primaryStage.show();
-
-					}
-				
+				}
 
 			} catch (FileNotFoundException e) {
 				System.out.println("File nije nadjen");

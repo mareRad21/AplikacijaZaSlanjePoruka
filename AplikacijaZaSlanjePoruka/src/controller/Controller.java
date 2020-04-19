@@ -3,10 +3,8 @@ package controller;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import javafx.scene.Scene;
@@ -24,7 +22,7 @@ import view.Scena3;
 
 public class Controller {
 	private Korisnik k;
-
+	// da li je ovo neophodno
 	{
 		File file = new File("korisnici.dat");
 		try {
@@ -82,24 +80,25 @@ public class Controller {
 		posaljiBtnEvent = new PosaljiBtnEvent(scenaTreca.getPrimalacTextFld(), scenaTreca.getNaslovTextFld(),
 				scenaTreca.getTextPorukeTextArea());
 		prikaziPorukeBtnEvent = new PrikaziPorukeBtnEvent(scenaDruga.getComboTipPoruka(), scenaDruga.getTabelaPoruka());
-		prikaziTextPorukeBtnEvent = new PrikaziTextPorukeBtnEvent(scenaDruga.getTabelaPoruka(),scenaDruga.getTextPoruke());
+		prikaziTextPorukeBtnEvent = new PrikaziTextPorukeBtnEvent(scenaDruga.getTabelaPoruka(),
+				scenaDruga.getTextPoruke());
 		try {
 			File file = new File("korisnici.dat");
 
 			// kako da stavimo da se ovo izvrsi samo pri prvom pokretanju programa
 
-			
 			/*
 			 * ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
 			 * korisniciUFileu.add(new Korisnik("admin@admin.com"));
 			 * out.writeObject(korisniciUFileu);
 			 */
-			 
-			 
+
 			ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
 
 			try {
 				korisniciUFileu = (ArrayList<Korisnik>) in.readObject();
+
+				// stampanje postojecih korisnika u consolu radi lakseg rada i provere
 
 				for (Korisnik k : korisniciUFileu) {
 					System.out.println(k);
@@ -249,5 +248,5 @@ public class Controller {
 	public void setPrikaziTextPorukeBtnEvent(PrikaziTextPorukeBtnEvent prikaziTextPorukeBtnEvent) {
 		this.prikaziTextPorukeBtnEvent = prikaziTextPorukeBtnEvent;
 	}
-	
+
 }

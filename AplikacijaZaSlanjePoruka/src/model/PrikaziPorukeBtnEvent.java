@@ -5,11 +5,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Alert.AlertType;
-import view.Scena2;
+import javafx.scene.control.ComboBox;
 import view.TabelaPregledOdabranihPoruka;
 
 public class PrikaziPorukeBtnEvent implements EventHandler<javafx.event.ActionEvent> {
@@ -28,6 +26,9 @@ public class PrikaziPorukeBtnEvent implements EventHandler<javafx.event.ActionEv
 	@Override
 	public void handle(ActionEvent arg0) {
 
+		// dve razlicite ObservableList-e koje ce se u zavisnosti od izbora u
+		// comboBox-u napuniti objektima tipa poruka i kasnije upotrebiti u metodi
+		// setItems() za prikaz u TableView
 		ObservableList<Poruka> odlaznePoruke = FXCollections.observableArrayList();
 
 		ObservableList<Poruka> dolaznePoruke = FXCollections.observableArrayList();
@@ -38,16 +39,14 @@ public class PrikaziPorukeBtnEvent implements EventHandler<javafx.event.ActionEv
 				for (Poruka poruka : Controller.getInstance().getScenaDruga().getKorisnik().getPoslatePoruke()) {
 
 					odlaznePoruke.add(poruka);
-					System.out.println("puni poruke");
 				}
 				tabelaOdabranihPoruka.setItems(odlaznePoruke);
-				System.out.println("pozvan odlazni action event");
-				System.out.println(Controller.getInstance().getKorisnik());
 
 			}
+			// ako nema poruka pojavljuje se alert
 			else {
 				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setContentText("Nema tih poruka");
+				alert.setContentText("Nema odlaznih poruka");
 				alert.show();
 			}
 		}
@@ -58,17 +57,15 @@ public class PrikaziPorukeBtnEvent implements EventHandler<javafx.event.ActionEv
 				for (Poruka poruka : Controller.getInstance().getScenaDruga().getKorisnik().getPrimljenePoruke()) {
 
 					dolaznePoruke.add(poruka);
-					System.out.println("puni poruke");
 
 				}
 
 				tabelaOdabranihPoruka.setItems(dolaznePoruke);
-				System.out.println("pozvan dolazni action event");
-				System.out.println(Controller.getInstance().getKorisnik());
 			}
+			// ako nema poruka pojavljuje se alert
 			else {
 				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setContentText("Nema tih poruka");
+				alert.setContentText("Nema dolaznih poruka");
 				alert.show();
 			}
 		}

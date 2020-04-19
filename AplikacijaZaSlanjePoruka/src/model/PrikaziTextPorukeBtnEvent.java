@@ -1,6 +1,5 @@
 package model;
 
-import controller.Controller;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.TextArea;

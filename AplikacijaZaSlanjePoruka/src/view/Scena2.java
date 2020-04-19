@@ -1,8 +1,5 @@
 package view;
 
-import java.util.ArrayList;
-import java.util.Observable;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -10,7 +7,6 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -40,15 +36,13 @@ public class Scena2 extends BorderPane{
 	
 	private Korisnik korisnik;
 
-	private ArrayList<Korisnik> korisniciIzFilea;
 	
 	
-	// korisnik je pod znakom pitanja !!!!!
+
 	public Scena2() {
 		
 		
 		ukupnoPorukaLbl = new Label();
-		//ukupnoPorukaLbl = new Label("Ukupno poruka: " + korisnik.getPrimljenePoruke().size() + " dolazne i "				+ korisnik.getPoslatePoruke().size() + " odlazne");
 		ObservableList<String> comboBoxDelovi = FXCollections.observableArrayList("Odlazne", "Dolazne");
 		comboTipPoruka = new ComboBox<>(comboBoxDelovi);
 		comboTipPoruka.setValue(comboBoxDelovi.get(0));
@@ -60,7 +54,6 @@ public class Scena2 extends BorderPane{
 		textPoruke = new TextArea();
 
 		novaPorukaBtn = new Button("Nova poruka");
-		//poceo odavde
 		hBoxZaLabeluUkupnoPoruka = new HBox();
 		hBoxZaLabeluUkupnoPoruka.setAlignment(Pos.CENTER);
 		hBoxZaLabeluUkupnoPoruka.setMargin(ukupnoPorukaLbl, new Insets(15, 15, 5, 15));

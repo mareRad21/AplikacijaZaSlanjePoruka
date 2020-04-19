@@ -47,6 +47,8 @@ public class Korisnik  implements Serializable{
 		return email;
 	}
 	
+	// nacin na koji ce se razlikovati objekti ove klase 
+	
 	@Override
 	public int hashCode() {
 		
