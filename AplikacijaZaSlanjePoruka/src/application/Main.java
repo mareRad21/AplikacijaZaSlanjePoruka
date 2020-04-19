@@ -23,6 +23,8 @@ public class Main extends Application {
 					.setOnAction(Controller.getInstance().getPosaljiBtnEvent());
 			Controller.getInstance().getScenaDruga().getPrikaziBtn()
 					.setOnAction(Controller.getInstance().getPrikaziPorukeBtnEvent());
+			Controller.getInstance().getScenaDruga().getPrikaziTekstBtn()
+					.setOnAction(Controller.getInstance().getPrikaziTextPorukeBtnEvent());
 
 			Scene scene = Controller.getInstance().getSceneOne();
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());

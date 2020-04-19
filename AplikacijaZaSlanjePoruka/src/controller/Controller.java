@@ -17,6 +17,7 @@ import model.NovaPorukaBtnEvent;
 import model.PosaljiBtnEvent;
 import model.PregledPorukaBtnEvent;
 import model.PrikaziPorukeBtnEvent;
+import model.PrikaziTextPorukeBtnEvent;
 import view.Scena1;
 import view.Scena2;
 import view.Scena3;
@@ -56,6 +57,7 @@ public class Controller {
 	private NovaPorukaBtnEvent novaPorukaBtnEvent;
 	private PosaljiBtnEvent posaljiBtnEvent;
 	private PrikaziPorukeBtnEvent prikaziPorukeBtnEvent;
+	private PrikaziTextPorukeBtnEvent prikaziTextPorukeBtnEvent;
 
 	private Scene sceneOne;
 	private Scene sceneTwo;
@@ -80,7 +82,7 @@ public class Controller {
 		posaljiBtnEvent = new PosaljiBtnEvent(scenaTreca.getPrimalacTextFld(), scenaTreca.getNaslovTextFld(),
 				scenaTreca.getTextPorukeTextArea());
 		prikaziPorukeBtnEvent = new PrikaziPorukeBtnEvent(scenaDruga.getComboTipPoruka(), scenaDruga.getTabelaPoruka());
-
+		prikaziTextPorukeBtnEvent = new PrikaziTextPorukeBtnEvent(scenaDruga.getTabelaPoruka(),scenaDruga.getTextPoruke());
 		try {
 			File file = new File("korisnici.dat");
 
@@ -239,4 +241,13 @@ public class Controller {
 	public void setPrikaziPorukeBtnEvent(PrikaziPorukeBtnEvent prikaziPorukeBtnEvent) {
 		this.prikaziPorukeBtnEvent = prikaziPorukeBtnEvent;
 	}
+
+	public PrikaziTextPorukeBtnEvent getPrikaziTextPorukeBtnEvent() {
+		return prikaziTextPorukeBtnEvent;
+	}
+
+	public void setPrikaziTextPorukeBtnEvent(PrikaziTextPorukeBtnEvent prikaziTextPorukeBtnEvent) {
+		this.prikaziTextPorukeBtnEvent = prikaziTextPorukeBtnEvent;
+	}
+	
 }
