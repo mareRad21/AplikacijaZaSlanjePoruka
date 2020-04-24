@@ -57,40 +57,35 @@ public class KreirajNovogKorisnikaBtnEvent implements EventHandler<javafx.event.
 		} else {
 
 			try {
-				// iscitavanje iz filea svih objekata tipa Korisnik u kolekciju
-
-				ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
-
-				korisniciUFileu = (ArrayList<Korisnik>) in.readObject();
-				in.close();
-
-				// pravljennje nove liste koja ce se popuniti objektima iz kolekcije iznad
-
-				ArrayList<Korisnik> listaZaProveru = new ArrayList<>();
-				for (Korisnik korisnikIzFajla : korisniciUFileu) {
-					listaZaProveru.add(korisnikIzFajla);
-				}
 
 				korisnik = new Korisnik(emailTextField.getText());
+				// iscitavanje iz filea svih objekata tipa Korisnik u kolekciju
 
-				// provera da li korisnik koga zelimo napraviti vec postoji u listi korisnika
-				if (listaZaProveru.contains(korisnik)) {
-					Alert alert = new Alert(AlertType.INFORMATION);
-					alert.setContentText("Korisnik sa emailom: " + emailTextField.getText() + " vec postoji");
-					alert.show();
-					emailTextField.clear();
-					return;
+				if (file.length() != 0) {
+					korisniciUFileu = Controller.getInstance().getKorisniciUFileu();
 
-				} else {
+					// pravljennje nove liste koja ce se popuniti objektima iz kolekcije iznad
 
-					// dodavanje korisnika ako taj korisnik vec ne postoji
+					ArrayList<Korisnik> listaZaProveru = new ArrayList<>();
+					for (Korisnik korisnikIzFajla : korisniciUFileu) {
+						listaZaProveru.add(korisnikIzFajla);
+					}
+
+					// provera da li korisnik koga zelimo napraviti vec postoji u listi korisnika
+					if (listaZaProveru.contains(korisnik)) {
+						Alert alert = new Alert(AlertType.INFORMATION);
+						alert.setContentText("Korisnik sa emailom: " + emailTextField.getText() + " vec postoji");
+						alert.show();
+						emailTextField.clear();
+						return;
+
+					}
 					korisniciUFileu.add(korisnik);
 
 					Alert alert = new Alert(AlertType.INFORMATION);
 					alert.setContentText("Korisnik sa emailom: " + korisnik.getEmail() + " je dodat");
 					alert.show();
-					
-					
+
 					Controller.getInstance().setKorisniciUFileu(korisniciUFileu);
 					ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
 					out.writeObject(korisniciUFileu);
@@ -101,7 +96,41 @@ public class KreirajNovogKorisnikaBtnEvent implements EventHandler<javafx.event.
 					Controller.getInstance().setKorisnik(korisnik);
 					Controller.getInstance().getScenaDruga().setKorisnik(korisnik);
 					// podesavanje teksta labele
-					
+
+					Controller.getInstance().getScenaDruga().getUkupnoPorukaLbl()
+							.setText("Ukupno poruka: "
+									+ Controller.getInstance().getScenaDruga().getKorisnik().getPrimljenePoruke().size()
+									+ " dolazne i "
+									+ Controller.getInstance().getScenaDruga().getKorisnik().getPoslatePoruke().size()
+									+ " odlazne");
+
+					scene2 = Controller.getInstance().getSceneTwo();
+					primaryStage = Controller.getInstance().getPrimaryStage();
+					primaryStage.setScene(scene2);
+					primaryStage.show();
+
+				}
+
+				else {
+
+					// dodavanje korisnika ako taj korisnik vec ne postoji
+					korisniciUFileu.add(korisnik);
+
+					Alert alert = new Alert(AlertType.INFORMATION);
+					alert.setContentText("Korisnik sa emailom: " + korisnik.getEmail() + " je dodat");
+					alert.show();
+
+					Controller.getInstance().setKorisniciUFileu(korisniciUFileu);
+					ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
+					out.writeObject(korisniciUFileu);
+					out.flush();
+
+					out.close();
+
+					Controller.getInstance().setKorisnik(korisnik);
+					Controller.getInstance().getScenaDruga().setKorisnik(korisnik);
+					// podesavanje teksta labele
+
 					Controller.getInstance().getScenaDruga().getUkupnoPorukaLbl()
 							.setText("Ukupno poruka: "
 									+ Controller.getInstance().getScenaDruga().getKorisnik().getPrimljenePoruke().size()
@@ -121,9 +150,6 @@ public class KreirajNovogKorisnikaBtnEvent implements EventHandler<javafx.event.
 				e.printStackTrace();
 			} catch (IOException e) {
 
-				e.printStackTrace();
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 

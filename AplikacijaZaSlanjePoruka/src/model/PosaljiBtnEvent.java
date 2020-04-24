@@ -44,10 +44,9 @@ public class PosaljiBtnEvent implements EventHandler<javafx.event.ActionEvent> {
 		try {
 			// iscitavanje file-a i izvlacenje korisnika kome se salje poruka
 
-			ObjectInputStream in = new ObjectInputStream(new FileInputStream("korisnici.dat"));
+			
 
-			ArrayList<Korisnik> korisniciIzFajla = (ArrayList<Korisnik>) in.readObject();
-			in.close();
+			ArrayList<Korisnik> korisniciIzFajla = Controller.getInstance().getKorisniciUFileu();
 			Korisnik primalac = new Korisnik(primalacTextFld.getText());
 			for (Korisnik korisnik : korisniciIzFajla) {
 				if (korisnik.equals(primalac)) {
@@ -65,7 +64,7 @@ public class PosaljiBtnEvent implements EventHandler<javafx.event.ActionEvent> {
 						}
 					}
 
-					Controller.getInstance().getKorisnik().getPoslatePoruke().add(poruka);
+					
 
 					if (korisnik.equals(Controller.getInstance().getScenaTreca().getKorisnik())) {
 						Controller.getInstance().getScenaTreca().getKorisnik().getPrimljenePoruke().add(poruka);

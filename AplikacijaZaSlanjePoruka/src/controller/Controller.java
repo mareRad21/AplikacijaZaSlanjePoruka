@@ -3,8 +3,10 @@ package controller;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import javafx.scene.Scene;
@@ -21,27 +23,7 @@ import view.Scena2;
 import view.Scena3;
 
 public class Controller {
-	private Korisnik k;
-	// da li je ovo neophodno
-	{
-		File file = new File("korisnici.dat");
-		try {
-			ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
-			ArrayList<Korisnik> korisniciFile = (ArrayList<Korisnik>) in.readObject();
-			k = korisniciFile.get(0);
-			System.out.println("controler");
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
-	}
 	private static Controller instance = null;
 
 	private Scena1 scenaPrva;
@@ -60,7 +42,7 @@ public class Controller {
 	private Scene sceneOne;
 	private Scene sceneTwo;
 	private Scene sceneThree;
-
+	private File file = new File("korisnici.dat");
 	private ArrayList<Korisnik> korisniciUFileu = new ArrayList<>();
 
 	private Controller() {
@@ -74,6 +56,20 @@ public class Controller {
 		sceneTwo = new Scene(scenaDruga, 400, 400);
 
 		sceneThree = new Scene(scenaTreca, 400, 400);
+		
+		if (file.length()!=0) {
+			
+			ObjectInputStream in;
+			try {
+				in = new ObjectInputStream(new FileInputStream("korisnici.dat"));
+				korisniciUFileu = (ArrayList<Korisnik>) in.readObject();
+				
+			} catch (IOException | ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
 
 		pregledPorukaBtnEvent = new PregledPorukaBtnEvent(scenaPrva.getEmailTextFld());
 		novaPorukaBtnEvent = new NovaPorukaBtnEvent();
@@ -82,38 +78,6 @@ public class Controller {
 		prikaziPorukeBtnEvent = new PrikaziPorukeBtnEvent(scenaDruga.getComboTipPoruka(), scenaDruga.getTabelaPoruka());
 		prikaziTextPorukeBtnEvent = new PrikaziTextPorukeBtnEvent(scenaDruga.getTabelaPoruka(),
 				scenaDruga.getTextPoruke());
-		try {
-			File file = new File("korisnici.dat");
-
-			// kako da stavimo da se ovo izvrsi samo pri prvom pokretanju programa
-
-			/*
-			 * ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
-			 * korisniciUFileu.add(new Korisnik("admin@admin.com"));
-			 * out.writeObject(korisniciUFileu);
-			 */
-
-			ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
-
-			try {
-				korisniciUFileu = (ArrayList<Korisnik>) in.readObject();
-
-				// stampanje postojecih korisnika u consolu radi lakseg rada i provere
-
-				for (Korisnik k : korisniciUFileu) {
-					System.out.println(k);
-				}
-
-			} catch (ClassNotFoundException e) {
-
-				e.printStackTrace();
-			}
-		} catch (FileNotFoundException e) {
-
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 
 		kreirajNovogKorisnikaBtnEvent = new KreirajNovogKorisnikaBtnEvent(scenaPrva.getEmailTextFld());
 	}
