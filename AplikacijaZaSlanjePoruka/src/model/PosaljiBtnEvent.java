@@ -90,6 +90,10 @@ public class PosaljiBtnEvent implements EventHandler<javafx.event.ActionEvent> {
 					primaryStage = Controller.getInstance().getPrimaryStage();
 					primaryStage.setScene(scene2);
 					primaryStage.show();
+					
+					primalacTextFld.clear();
+					naslovTextFld.clear();
+					textPorukeTextArea.clear();
 					return;
 				}
 			}
